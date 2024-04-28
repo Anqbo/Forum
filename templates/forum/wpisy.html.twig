@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Wpisy</title>
+</head>
+<body>
+    <h1>Wpisy</h1>
+    <!-- <form>
+        Wybierz artykul: <select>
+            {% for wpis in wpisy%}
+        <option value="{{wpis.id}}"> "{{wpis.title}}"</option>
+    {% endfor %}
+        </select>
+    </form> -->
+
+    {% for wpis in wpisy%}
+        <a href="wpis/{{wpis.id}}">{{wpis.title}}</a><br />
+    {% endfor %}
+    
+</body>
+</html>
