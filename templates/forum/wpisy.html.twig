@@ -3,19 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Wpisy</title>
+    <style>
+        hr{
+            width:50%;
+            float: left;
+        }
+
+        a{
+            decoration: none;
+            color: purple;
+
+        }
+
+        a:visited{
+            decoration: none;
+            color:green;
+        }
+
+        a:hover{
+            color:lightblue;
+        }
+    </style>
 </head>
 <body>
     <h1>Wpisy</h1>
-    <!-- <form>
-        Wybierz artykul: <select>
-            {% for wpis in wpisy%}
-        <option value="{{wpis.id}}"> "{{wpis.title}}"</option>
-    {% endfor %}
-        </select>
-    </form> -->
 
     {% for wpis in wpisy%}
-        <a href="wpis/{{wpis.id}}">{{wpis.title}}</a><br />
+        <h3><a href="wpis/{{wpis.id}}">{{wpis.title}} - {{wpis.category}}</a></h3>
+        <p>{{wpis.content}}</p>
+        <hr><br /><br />
     {% endfor %}
     
 </body>
