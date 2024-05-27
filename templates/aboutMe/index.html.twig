@@ -2,22 +2,19 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>Wpis</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About me</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        #data{
-            font-size: 80%;
-        }
 
         body {
             font-family: Arial, sans-serif;
         }
 
-        /* Stylizacja nagłówka i menu */
         .navi{
             display: flex;
             align-items: center;
@@ -54,22 +51,6 @@
             background-color: #575757;
             border-radius: 4px;
         }
-
-        .back{
-            background-color: #4CAF50; /* Zielone tło */
-            color: white; /* Biały tekst */
-            border: none; /* Bez obramowania */
-            padding: 10px 20px; /* Wewnętrzne marginesy */
-            font-size: 16px; /* Rozmiar czcionki */
-            font-weight: bold; /* Pogrubiona czcionka */
-            border-radius: 5px; /* Zaokrąglone narożniki */
-            cursor: pointer; /* Wskaźnik kursora */
-            transition: background-color 0.3s ease; /* Płynne przejście koloru tła */
-        }
-
-        .back:hover {
-            background-color: #45a049; /* Ciemniejszy zielony najechaniu */
-        }
         .content {
             padding: 20px;
             text-align: center;
@@ -81,15 +62,21 @@
     </style>
 </head>
 <body>
-    <div class="content">
-        <h2>Tytlu: {{wpis.title}}</h2>
-        <h3>Kategria: {{wpis.category}}</h3><br>
-        
-        <p id="content">{{ wpis.content[:150]}}</p><br>
-        <p id="data">Data dodania: {{ wpis.dateAdded|date('Y-m-d') }}</p><br>
+    <div class="navi">
+        <h1>Forum</h1>
+        <ul>
+            <li><a href="/menu">Menu</a></li>
+            <li><a href="/wpisy">Posts</a></li>
+            <li><a href="/about">About Me</a></li>
+        </ul>
     </div>
-    
-    <a href="/wpisy"><button class="back">Back</button></a>
-    
+    <div class="content">
+        <h1>Dane</h1>
+            STRONA W BUDOWIE
+        <table>
+            <tr><th></th></tr>
+            <tr><td></td></tr>
+        </table>
+    </div>
 </body>
 </html>

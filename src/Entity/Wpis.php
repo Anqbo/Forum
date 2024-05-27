@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\WpisRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: WpisRepository::class)]
@@ -21,6 +22,9 @@ class Wpis
 
     #[ORM\Column(length: 255)]
     private ?string $category = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $dateAdded = null;
 
     public function getId(): ?int
     {
@@ -59,6 +63,18 @@ class Wpis
     public function setCategory(string $category): static
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    public function getDateAdded(): ?\DateTimeInterface
+    {
+        return $this->dateAdded;
+    }
+
+    public function setDateAdded(\DateTimeInterface $dateAdded): static
+    {
+        $this->dateAdded = $dateAdded;
 
         return $this;
     }

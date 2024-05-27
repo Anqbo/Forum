@@ -13,6 +13,7 @@ class PostProvider{
                 'title' => $wpis->getTitle(),
                 'category' => $wpis->getCategory(),
                 'content' => substr($wpis->getContent(), 0, 30).'...',
+                'dateAdded' => $wpis->getDateAdded(),
                 'link' => 'wpis/'.$wpis->getId(),
             ];
         }

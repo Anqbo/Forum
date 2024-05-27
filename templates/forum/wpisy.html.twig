@@ -4,11 +4,6 @@
     <meta charset="UTF-8">
     <title>Wpisy</title>
     <style>
-        hr{
-            width:50%;
-            float: left;
-        }
-
         a{
             decoration: none;
             color: purple;
@@ -23,16 +18,84 @@
         a:hover{
             color:lightblue;
         }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        /* Stylizacja nagłówka i menu */
+        .navi{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #333;
+            padding: 10px 20px;
+        }
+
+        .navi h1 {
+            color: #fff;
+            font-size: 24px;
+        }
+
+        .navi ul {
+            display: flex;
+            list-style-type: none;
+            justify-content: center;
+            padding: 10px 0;
+        }
+
+        .navi ul li {
+            margin: 0 15px;
+        }
+
+        .navi ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 8px 12px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .navi ul li a:hover {
+            background-color: #575757;
+            border-radius: 4px;
+        }
+        .content {
+            padding: 20px;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
 <body>
-    <h1>Wpisy</h1>
+    <div class="navi">
+        <h1>Forum</h1>
+        <ul>
+            <li><a href="/menu">Menu</a></li>
+            <li><a href="/wpisy">Posts</a></li>
+            <li><a href="/about">About Me</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+    <h1>Wpisy</h1><br>
 
     {% for wpis in wpisy%}
         <h3><a href="wpis/{{wpis.id}}">{{wpis.title}} - {{wpis.category}}</a></h3>
         <p>{{wpis.content}}</p>
-        <hr><br /><br />
+        <br />
     {% endfor %}
+
+    </div>
     
 </body>
 </html>
