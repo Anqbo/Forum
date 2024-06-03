@@ -3,11 +3,13 @@
 declare(strict_types=1);
 
 namespace App\Controller;
+use App\Entity\Wpis;
 use App\Repository\WpisRepository;
 use App\Service\PostProvider;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 class ForumController extends AbstractController{
    
@@ -25,11 +27,25 @@ class ForumController extends AbstractController{
     //     return $this->render('forum/wpisy.html.twig', ['wpisy' => $wpisy]);
     // }
 
-    #[Route('/wpis/{id}', name: 'one_wpis')]
+    #[Route('/wpis/{id}', name: 'one_post')]
     public function getOneWpisById(int $id){
         $wpis = $this->wpisRepository->find($id);
 
         return $this->render('forum/wpis.html.twig', ['wpis' => $wpis]);
+    }
+
+    #[Route('/wpis/{id}/edit', name: 'forum-post-edit')]
+   public function savePost(Request $request): Response
+    {
+        $request->get('id');
+        return new Response('Edit post');
+    }
+
+    #[Route('/wpis/{id}/delete', name: 'forum-wpis-delete')]
+    public function deletePost(Wpis $wpis)
+    {
+       $this->wpisRepository->remove($wpis);
+       return $this->redirectToRoute('wpisy');
     }
 
     #[Route('/wpisy', name: 'wpisy')]

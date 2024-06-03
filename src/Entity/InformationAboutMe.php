@@ -19,6 +19,11 @@ class InformationAboutMe
     #[ORM\Column(length: 300)]
     private ?string $value = null;
 
+    // public function __construct($key, $value){
+    //     $this->key = $key;
+    //     $this->value = $value;
+    // }
+
     public function getId(): ?int
     {
         return $this->id;

@@ -20,6 +20,34 @@ class WpisRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Wpis::class);
     }
+    public function remove(Wpis $wpis, bool $flush = true){
+        $this->getEntityManager()->remove($wpis);
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+
+    public function getLastPost(): ?Wpis
+    {
+        $queryBuilder = $this->createQueryBuilder('w');
+        $queryBuilder->orderBy('w.dateAdded', 'DESC');
+        $queryBuilder->setMaxResults(1);
+
+        return $queryBuilder->getQuery()->getOneOrNullResult();
+    }
+
+    public function getPostsByTitle(string $text)
+    {
+        $queryBuilder = $this->createQueryBuilder('w');
+        $queryBuilder->where(
+            $queryBuilder->expr()->like('w.title', ':text')
+        );
+        $queryBuilder->setParameter('text','%'.$text.'%');
+        $queryBuilder->orderBy('w.dateAdded', 'DESC');
+        $queryBuilder->setMaxResults(10);
+
+        return $queryBuilder->getQuery()->getResult();
+    }
 
 //    /**
 //     * @return Wpis[] Returns an array of Wpis objects

@@ -63,18 +63,24 @@
 </head>
 <body>
     <div class="navi">
-        <h1>Forum</h1>
+        <h1>
+        <form method='GET' action='/search'>
+        <input type='text' name='wyszukiwarka'><button type='sent'>szukaj</button>
+        </form>
+        </h1>
         <ul>
-            <li><a href="/menu">Menu</a></li>
+            <li><a href="/">Menu</a></li>
             <li><a href="/wpisy">Posts</a></li>
             <li><a href="/about">About Me</a></li>
         </ul>
     </div>
     <div class="content">
-        <p> Witaj!<br />
-            Tu znajdziesz oferty drobnych prac, lub sam możesz ogłości, jako szukający, swoją własną oferte :D<br /><br />
-            
-            Strona wciąż się rozwija, obecne wpisy mozesz zobaczyć w zakładcy "Posts"</p>
+        <h2> Last Post</h2><br />
+        <p id="data">{{ wpis.dateAdded|date('Y-m-d') }}</p>
+        <h3>{{wpis.title}}</h3>
+        {# <h4>Kategria: {{wpis.category}}</h4> #}
+        <p id="content">{{ wpis.content[:150]}}</p><br>
+        
     </div>
 </body>
 </html>

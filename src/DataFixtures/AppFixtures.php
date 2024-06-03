@@ -23,15 +23,30 @@ class AppFixtures extends Fixture
         $wpis2->setContent("Szukam drobnej robory, takiej jak pomoc w ogrodku lub wyprowadzanie zwierzat");
         $wpis2->setTitle("Szukam pracy");
         $wpis2->setCategory("szukajacy");
-        $wpis->setDateAdded(new \DateTime('2024-05-24'));
+        $wpis2->setDateAdded(new \DateTime('2024-05-24'));
 
         $manager->persist($wpis2);
 
-        // $osoba = new InformationAboutMe();
-        // $osoba->setKey('name');
-        // $osoba->setValue('Anna');
+        $wpis3 = new Wpis();
+        $wpis3->setContent("Oferuje prace przy wyprowadzaniu zwierzat, chetnych prosze o kontakt telefoniczny: 000 000 000");
+        $wpis3->setTitle("Wyprowadzanie zwierzat");
+        $wpis3->setCategory("oferujacy");
+        $wpis3->setDateAdded(new \DateTime('2024-06-02'));
 
-        // $manager->persist($osoba);
+        $manager->persist($wpis3);
+
+        $imie = new InformationAboutMe();
+        $imie->setKey('name');
+        $imie->setValue('Anna');
+
+        $manager->persist($imie);
+
+        $nazwisko = new InformationAboutMe();
+        $nazwisko->setKey('surname');
+        $nazwisko->setValue('Bork');
+
+        $manager->persist($nazwisko);
+
 
         $manager->flush();
     }

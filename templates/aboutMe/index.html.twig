@@ -59,23 +59,30 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+        table, td, th{
+            border:  2px solid #575757;
+            border-collapse: collapse;
+        }
+        th, td{
+            padding: 5px;
+        }
     </style>
 </head>
 <body>
     <div class="navi">
         <h1>Forum</h1>
         <ul>
-            <li><a href="/menu">Menu</a></li>
+            <li><a href="/">Menu</a></li>
             <li><a href="/wpisy">Posts</a></li>
             <li><a href="/about">About Me</a></li>
         </ul>
     </div>
     <div class="content">
         <h1>Dane</h1>
-            STRONA W BUDOWIE
         <table>
-            <tr><th></th></tr>
-            <tr><td></td></tr>
+        {% for info in infos %}
+            <tr><th>{{info.key}}</th><td>{{info.value}}</td></tr>
+        {% endfor %}
         </table>
     </div>
 </body>

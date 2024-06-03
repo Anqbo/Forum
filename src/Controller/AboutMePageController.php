@@ -23,6 +23,8 @@ class AboutMePageController extends AbstractController{
         if ($info) {
             $parameters = $this->aboutProvider->transformDataForTwig($info);
         }
+        // dd($parameters);
         return $this->render('aboutMe/index.html.twig', $parameters);
     }
+
 }

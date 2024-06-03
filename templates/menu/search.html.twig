@@ -1,24 +1,10 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Wpisy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
     <style>
-        a{
-            decoration: none;
-            color: purple;
-
-        }
-
-        a:visited{
-            decoration: none;
-            color:green;
-        }
-
-        a:hover{
-            color:lightblue;
-        }
-        
         * {
             margin: 0;
             padding: 0;
@@ -29,7 +15,6 @@
             font-family: Arial, sans-serif;
         }
 
-        /* Stylizacja nagłówka i menu */
         .navi{
             display: flex;
             align-items: center;
@@ -78,25 +63,26 @@
 </head>
 <body>
     <div class="navi">
-        <h1>Forum</h1>
+        <h1>
+        <form method='GET' action='/search/'>
+        <input type='text' name='wyszukiwarka'><button type='sent' name='przycisk'>szukaj</button>
+        </form>
+        </h1>
         <ul>
             <li><a href="/">Menu</a></li>
             <li><a href="/wpisy">Posts</a></li>
             <li><a href="/about">About Me</a></li>
         </ul>
     </div>
-
     <div class="content">
-    <h1>Wpisy</h1><br>
-
-    {% for wpis in wpisy %}
-        <h3><a href="wpis/{{wpis.id}}">{{wpis.title}} - {{wpis.category}}</a></h3>
-        <p>{{ wpis.dateAdded|date('Y-m-d') }}</p>
-        <p>{{wpis.content}}</p>
-        <br />
-    {% endfor %}
-
+        <h2> Results of searching: </h2><br />
+        {% for wpis in wpisy %}
+            <h3><a href="wpis/{{wpis.id}}">{{wpis.title}} - {{wpis.category}}</a></h3>
+            <p>{{ wpis.dateAdded|date('Y-m-d') }}</p>
+            <p>{{wpis.content}}</p>
+            <br />
+        {% endfor %}
+        
     </div>
-    
 </body>
 </html>
