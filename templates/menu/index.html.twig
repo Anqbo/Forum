@@ -59,13 +59,35 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+       input[type="text"] {
+            padding: 6px 10px; /* Mniejsze wypełnienie */
+            border: 1px solid #ccc; /* Grubość i styl obramowania */
+            border-radius: 4px; /* Zaokrąglenie rogów */
+            font-size: 14px; /* Mniejszy rozmiar czcionki */
+        }
+
+            /* Styl dla przycisku */
+        button[type="submit"] {
+            padding: 8px 16px; /* Mniejsze wypełnienie */
+            background-color: #007bff; /* Kolor tła */
+            color: #fff; /* Biały kolor tekstu */
+            border: none; /* Usunięcie obramowania */
+            border-radius: 4px; /* Zaokrąglenie rogów */
+            cursor: pointer; /* Kursor */
+            font-size: 14px;/* Mniejszy rozmiar czcionki */
+        }
+
+            /* Dodatkowy styl, gdy przycisk jest najechany kursorem */
+        button[type="submit"]:hover {
+            background-color: #0056b3; /* Ciemniejszy kolor tła po najechaniu kursorem */
+        }
     </style>
 </head>
 <body>
     <div class="navi">
         <h1>
         <form method='GET' action='/search'>
-        <input type='text' name='wyszukiwarka'><button type='sent'>szukaj</button>
+        <input type='text' name='wyszukiwarka'><button type='submit'>szukaj</button>
         </form>
         </h1>
         <ul>
