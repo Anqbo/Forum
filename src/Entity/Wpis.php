@@ -5,10 +5,19 @@ namespace App\Entity;
 use App\Repository\WpisRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Type;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
 
 #[ORM\Entity(repositoryClass: WpisRepository::class)]
 class Wpis
 {
+    #[Assert\NotBlank]
+    public string $wpis;
+
+
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -24,6 +33,8 @@ class Wpis
     private ?string $category = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Assert\NotBlank]
+    #[Assert\Type(\DateTimeInterface::class)]
     private ?\DateTimeInterface $dateAdded = null;
 
     public function getId(): ?int
@@ -77,5 +88,14 @@ class Wpis
         $this->dateAdded = $dateAdded;
 
         return $this;
+    }
+
+
+    public static function loadValidatorMetadata(ClassMetadata $metadata): void
+    {
+        $metadata->addPropertyConstraint('wpis', new NotBlank());
+
+        $metadata->addPropertyConstraint('dateAdded', new NotBlank());
+        $metadata->addPropertyConstraint('dateAdded', new Type(\DateTimeImmutable::class));
     }
 }
