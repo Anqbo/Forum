@@ -20,13 +20,9 @@ class WpisController extends AbstractController
 
     }
     #[Route('/add', 'addNewForm')]
-    public function edit(Request $request): Response
+    public function dodajWpis(Request $request): Response
     {
         $wpis= new Wpis();
-        // $wpis->setTitle('Wpisz swoj tytul');
-        // $wpis->setContent('przykladwoy wpis');
-        // $wpis->setCategory('oferujacy');
-        // $wpis->setDateAdded(new \DateTimeImmutable('tomorrow'));
 
         $form = $this->createForm(EditFormType::class, $wpis);
         $form->handleRequest($request);
@@ -41,5 +37,24 @@ class WpisController extends AbstractController
 
         return $this->render('forum/add.html.twig', ['form' => $form]);
 
+    }
+
+    #[Route('/wpis/{id}/edit', name: 'one_post')]
+    public function getOneWpisById(int $id, Request $request){
+        $wpis = $this->wpisRepository->find($id);
+        $form = $this->createForm(EditFormType::class, $wpis);
+
+        $form->handleRequest($request);
+
+        if( $form->isSubmitted() && $form->isValid()){
+            $wpis = $form->getData();
+
+            $this->wpisRepository->save($wpis, true);
+
+            return $this->redirectToRoute('wpisy');
+        }
+
+        return $this->render('forum/add.html.twig', ['form' => $form]);
+        return $this->render('forum/wpis.html.twig', ['wpis' => $wpis]);
     }
 }
