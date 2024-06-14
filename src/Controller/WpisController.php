@@ -23,11 +23,12 @@ class WpisController extends AbstractController
         // $wpis->setDateAdded(new \DateTimeImmutable('tomorrow'));
 
         $form = $this->createForm(EditFormType::class, $wpis);
-        var_dump($form->getData());
+        $form->handleRequest($request);
 
         if( $form->isSubmitted() && $form->isValid()){
             $wpis = $form->getData();
 
+            dd($wpis);
 
             return $this->redirectToRoute('wpisy');
         }

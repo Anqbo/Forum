@@ -13,11 +13,6 @@ use Symfony\Component\Validator\Mapping\ClassMetadata;
 #[ORM\Entity(repositoryClass: WpisRepository::class)]
 class Wpis
 {
-    #[Assert\NotBlank]
-    public string $wpis;
-
-
-
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -93,8 +88,7 @@ class Wpis
 
     public static function loadValidatorMetadata(ClassMetadata $metadata): void
     {
-        $metadata->addPropertyConstraint('wpis', new NotBlank());
-
+        $metadata->addPropertyConstraint('title', new NotBlank());
         $metadata->addPropertyConstraint('dateAdded', new NotBlank());
         $metadata->addPropertyConstraint('dateAdded', new Type(\DateTimeImmutable::class));
     }
