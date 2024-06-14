@@ -17,7 +17,6 @@ class EditFormType extends AbstractType
     {
         $defaults = [
             'dateAdded' => new \DateTime('tomorrow'),
-            'category' => 'oferujacy',
             'title' => 'Wpisz swoj tytul'
         ];
 
