@@ -16,14 +16,19 @@ class EditFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $defaults = [
-            'dateAdded' => new \DateTime('tomorrow'),
-            'title' => 'Wpisz swoj tytul'
+            'dateAdded' => new \DateTime('tomorrow')
         ];
 
         $builder
-            ->add('title', TextType::class, ['data' => $defaults['title']])
-            ->add('content', TextareaType::class)
-            ->add('category', TextType::class)
+            ->add('title', TextType::class, ['attr' => [
+                    'placeholder' => 'Wpisz tytuł tutaj...',
+                ]])
+            ->add('content', TextareaType::class, ['attr' => [
+                    'placeholder' => 'Wpisz treść tutaj...',
+                ]])
+            ->add('category', TextType::class, ['attr' => [
+                'placeholder' => 'Wpisz kategorie tutaj...',
+            ]])
             ->add('dateAdded', DateType::class, array(
                 'input' => 'datetime_immutable',
             ))
@@ -33,7 +38,7 @@ class EditFormType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            // Configure your form options here
+            
         ]);
     }
 }

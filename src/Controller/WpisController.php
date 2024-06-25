@@ -40,7 +40,7 @@ class WpisController extends AbstractController
     }
 
     #[Route('/wpis/{id}/edit', name: 'editPost')]
-    public function edytujWpis(int $id, Request $request){
+    public function editPost(int $id, Request $request){
         $wpis = $this->wpisRepository->find($id);
         
         $form = $this->createForm(EditFormType::class, $wpis);
@@ -56,6 +56,6 @@ class WpisController extends AbstractController
             return $this->redirectToRoute('wpisy');
         }
 
-        return $this->render('forum/edit.html.twig', ['form' => $form]);;
+        return $this->render('forum/edit.html.twig', ['wpis'=> $wpis,'form' => $form->createView()]);
     }
 }

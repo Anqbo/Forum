@@ -2,7 +2,7 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>Wpis</title>
+    <title>{{wpis.title}}</title>
     <style>
         * {
             margin: 0;
@@ -63,6 +63,7 @@
             border-radius: 4px; 
             cursor: pointer; 
             font-size: 14px;
+            margin: 10px;
         }
 
         .back:hover {
@@ -76,19 +77,38 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+        h3{
+            font-family:monospace;
+            font-size:150%;
+        }
+        #content{
+            text-align: justify;
+            text-justify: inter-wor
+        }
+        #data{
+            text-align:right;
+        }
+        #del{
+            float:right;
+            background-color: #A6261B;
+            margin: 10px;
+        }
+        #del:hover{
+            background-color: red;
+        }
     </style>
 </head>
 <body>
     <div class="content">
-        <h2>Tytlu: {{wpis.title}}</h2>
-        <h3>Kategria: {{wpis.category}}</h3><br>
+        <h2>{{wpis.title}}</h2>
+        <p>Kategria: {{wpis.category}}</p><br>
         
-        <p id="content">{{ wpis.content[:150]}}</p><br>
+        <p id="content">{{ wpis.content}}</p><br>
         <p id="data">Data dodania: {{ wpis.dateAdded|date('Y-m-d') }}</p><br>
     </div>
     
     <a href="/wpisy"><button class="back">Back</button></a>
-    <a href="{{wpis.id}}/delete"><button class="back">Delete</button></a>
+    <a href="{{wpis.id}}/delete"><button id="del" class="back">Delete</button></a>
     <a href="{{wpis.id}}/edit"><button class="back">Edit</button></a>
     
 </body>

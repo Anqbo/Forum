@@ -2,31 +2,115 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Edit</title>
     <style>
-    button {
-            padding: 8px 16px; 
-            background-color: #808000; 
-            color: #fff; 
-            border: none; 
-            border-radius: 4px; 
-            cursor: pointer; 
-            font-size: 14px;
-            float:left;
-            margin:5px;
-        }
+   body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 
-        button:hover {
-            background-color: #807030;
-        }
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+form h2 {
+    margin-bottom: 20px;
+    color: #4a4a4a;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #4a4a4a;
+    margin-right: 5px; /* Dodajemy odstęp po prawej stronie */
+}
+
+input[type="text"], input[type="date"], textarea {
+    width: calc(100% - 12px); /* Odejmujemy odstęp (2 * 6px) */
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #4a4a4a;
+}
+
+input[type="text"]:focus, input[type="date"]:focus, textarea:focus {
+    border-color: #3c763d;
+    outline: none;
+    box-shadow: 0 0 5px rgba(60, 118, 61, 0.3);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+button {
+    background-color: #808000;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    float:left;
+    margin:5px;
+}
+
+button:hover {
+    background-color: #807030;
+}
+
+button:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(60, 118, 61, 0.3);
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+    form {
+        padding: 15px;
+    }
+
+    input[type="text"], input[type="date"], textarea {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+
     </style>
 </head>
 <body>
     {# templates/forum/edit.html.twig #}
-{{ form(form) }}
+{{ form_start(form) }}
+{{ form_widget(form)}}
+<a href="/wpisy"><button type="button" class="back">Back</button></a>
+{{ form_end(form) }}
 
-<a href="/wpisy"><button class="back">Back</button></a>
+
 </body>
 
 
