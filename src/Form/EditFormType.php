@@ -29,9 +29,8 @@ class EditFormType extends AbstractType
             ->add('category', TextType::class, ['attr' => [
                 'placeholder' => 'Wpisz kategorie tutaj...',
             ]])
-            ->add('dateAdded', DateType::class, array(
-                'input' => 'datetime_immutable',
-            ))
+            ->add('dateAdded', DateType::class, ['data' => $defaults['dateAdded']]
+            )
             ->add('save',SubmitType::class);
     }
 

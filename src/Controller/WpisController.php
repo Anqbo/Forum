@@ -35,7 +35,7 @@ class WpisController extends AbstractController
             return $this->redirectToRoute('wpisy');
         }
 
-        return $this->render('forum/add.html.twig', ['form' => $form]);
+        return $this->render('forum/add.html.twig', ['form' => $form->createView()]);
 
     }
 
