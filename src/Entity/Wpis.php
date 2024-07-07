@@ -5,6 +5,10 @@ namespace App\Entity;
 use App\Repository\WpisRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Type;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
 
 #[ORM\Entity(repositoryClass: WpisRepository::class)]
 class Wpis
@@ -77,5 +81,13 @@ class Wpis
         $this->dateAdded = $dateAdded;
 
         return $this;
+    }
+
+
+    public static function loadValidatorMetadata(ClassMetadata $metadata): void
+    {
+        $metadata->addPropertyConstraint('title', new NotBlank());
+        // $metadata->addPropertyConstraint('dateAdded', new NotBlank());
+        // $metadata->addPropertyConstraint('dateAdded', new Type(\DateTimeImmutable::class));
     }
 }

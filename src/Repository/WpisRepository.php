@@ -49,6 +49,20 @@ class WpisRepository extends ServiceEntityRepository
         return $queryBuilder->getQuery()->getResult();
     }
 
+    public function save($wpis, bool $flush = true){
+        $this->getEntityManager()->persist($wpis);
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+
+    public function edit($wpis, bool $flush = true){
+        $this->getEntityManager()->persist($wpis);
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+
 //    /**
 //     * @return Wpis[] Returns an array of Wpis objects
 //     */

@@ -58,6 +58,7 @@
             margin: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            
         }
        input[type="text"] {
             padding: 6px 10px;
@@ -66,7 +67,7 @@
             font-size: 14px; 
         }
 
-        button[type="submit"] {
+        button {
             padding: 8px 16px; 
             background-color: #808000;; 
             color: #fff;
@@ -77,31 +78,89 @@
         }
 
          
-        button[type="submit"]:hover {
+        button:hover {
             background-color: #807030;
         }
+ .bottom {
+    display: flex;
+    justify-content: space-between; /* Rozmieszcza dzieci równomiernie w poziomie */
+    align-items: center; /* Wyśrodkowuje dzieci w pionie */
+    text-align: center; /* Opcjonalnie, centruje tekst wewnątrz dzieci */
+    margin-top: 20px; /* Dodatkowy odstęp od górnego bloku */
+}
+
+.bottom hr {
+        width: 80%;
+        margin: 20px auto; /* Centrowanie hr */
+        border-color: #ccc;
+}
+
+.bottom .new,
+.bottom .last {
+    padding: 10px; /* Dodatkowy padding dla estetyki */
+}
+
+.bottom .new {
+    margin-right: 10px; /* Odstęp między blokami new i last */
+    width: calc(30% - 10px);
+}
+
+.bottom .last {
+    margin-left: 10px; /* Odstęp między blokami new i last */
+    width: calc(70% - 10px);
+    border-left: 1px solid #ccc;
+}
+
+        #wiecej {
+            text-decoration: none;
+            color: black;
+        }
+        .new {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Opcjonalnie, jeśli chcesz tekst wewnątrz centrować */
+}
+
+.new h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
     </style>
 </head>
 <body>
     <div class="navi">
         <h1>
         <form method='GET' action='/search'>
-        <input type='text' name='wyszukiwarka'><button type='submit'>szukaj</button>
+        <input type='text' name='wyszukiwarka'><button type='submit'>search</button>
         </form>
         </h1>
         <ul>
-            <li><a href="/">Strona główna</a></li>
+            <li><a href="/">Main Page</a></li>
             <li><a href="/wpisy">Posts</a></li>
             <li><a href="/about">About Me</a></li>
         </ul>
     </div>
     <div class="content">
-        <h2> Last Post</h2><br />
-        <p id="data">{{ wpis.dateAdded|date('Y-m-d') }}</p>
-        <h3>{{wpis.title}}</h3>
-        {# <h4>Kategria: {{wpis.category}}</h4> #}
-        <p id="content">{{ wpis.content[:150]}}</p><br>
-        
+        <div class="top">
+            <h1>FORUM FOR 4</h1>
+            <BR>
+        </div>
+        <div class="bottom">
+            <div class="new">
+                <h2> Add your own post</h2>
+                <a href="/add"><button class="back">Add</button></a><br />
+            </div>
+            <div class="last">
+                <h2> Last Post</h2>
+                <p id="data">{{ wpis.dateAdded|date('Y-m-d') }}</p>
+                <h3>{{wpis.title}}</h3>
+                {# <h4>Kategria: {{wpis.category}}</h4> #}
+                <p id="content">{{ wpis.content[:200]}}...<a id="wiecej" href="wpis/{{wpis.id}}"><b>more</b></a></p><br>
+            </div>
+        </div>
     </div>
 </body>
 </html>

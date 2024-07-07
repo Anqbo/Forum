@@ -34,12 +34,12 @@ class ForumController extends AbstractController{
         return $this->render('forum/wpis.html.twig', ['wpis' => $wpis]);
     }
 
-    #[Route('/wpis/{id}/edit', name: 'forum-post-edit')]
-   public function savePost(Request $request): Response
-    {
-        $request->get('id');
-        return new Response('Edit post');
-    }
+//     #[Route('/wpis/{id}/edit', name: 'forum-post-edit')]
+//    public function savePost(Request $request): Response
+//     {
+//         $request->get('id');
+//         return new Response('Edit post');
+//     }
 
     #[Route('/wpis/{id}/delete', name: 'forum-wpis-delete')]
     public function deletePost(Wpis $wpis)
