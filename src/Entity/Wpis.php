@@ -28,8 +28,6 @@ class Wpis
     private ?string $category = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    #[Assert\NotBlank]
-    #[Assert\Type(\DateTimeInterface::class)]
     private ?\DateTimeInterface $dateAdded = null;
 
     public function getId(): ?int
@@ -89,7 +87,7 @@ class Wpis
     public static function loadValidatorMetadata(ClassMetadata $metadata): void
     {
         $metadata->addPropertyConstraint('title', new NotBlank());
-        $metadata->addPropertyConstraint('dateAdded', new NotBlank());
-        $metadata->addPropertyConstraint('dateAdded', new Type(\DateTimeImmutable::class));
+        // $metadata->addPropertyConstraint('dateAdded', new NotBlank());
+        // $metadata->addPropertyConstraint('dateAdded', new Type(\DateTimeImmutable::class));
     }
 }
