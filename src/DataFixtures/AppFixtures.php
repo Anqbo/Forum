@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\InformationAboutMe;
 use App\Entity\Wpis;
+use App\Entity\Image;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
@@ -46,6 +47,11 @@ class AppFixtures extends Fixture
         $nazwisko->setValue('Bork');
 
         $manager->persist($nazwisko);
+
+        $image = new Image();
+        $image->setTitle("kotek");
+        $image->setPath("../../public/images/kotek.jpg");
+        $image->setAlt("zdjecie kotka chyba");
 
 
         $manager->flush();
