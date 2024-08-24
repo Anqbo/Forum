@@ -19,6 +19,7 @@ class AppFixtures extends Fixture
         $wpis->setDateAdded(new \DateTime('2024-05-12'));
 
         $manager->persist($wpis);
+        $idWpis = $wpis->getId();
 
         $wpis2 = new Wpis();
         $wpis2->setContent("Szukam drobnej robory, takiej jak pomoc w ogrodku lub wyprowadzanie zwierzat");
@@ -50,9 +51,11 @@ class AppFixtures extends Fixture
 
         $image = new Image();
         $image->setTitle("kotek");
-        $image->setPath("../../public/images/kotek.jpg");
+        $image->setPosts($idWpis);
+        $image->setPath("/images/kotek.jpg");
         $image->setAlt("zdjecie kotka chyba");
 
+        $manager->persist($image);
 
         $manager->flush();
     }
